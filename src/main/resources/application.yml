@@ -12,7 +12,7 @@ spring:
             url: https://api.twitch.tv/helix
             loggerLevel: basic
             default-request-headers:
-              Client-Id: "liogx109qz7mn6in1hkt9egmernar0"
+              Client-Id: "ziejjspwrws09g1bvj3a20kd6frtrf"
   security:
     oauth2:
       client:
@@ -20,11 +20,20 @@ spring:
           twitch:
             authorization-grant-type: client_credentials
             client-authentication-method: client_secret_post
-            client-id: "liogx109qz7mn6in1hkt9egmernar0"
-            client-secret: "7j5wjm18pqdwr6l5r5l45gxos5fa6m"
+            client-id: "ziejjspwrws09g1bvj3a20kd6frtrf"
+            client-secret: "wjot2b6tykirdnuoqwmr2z0oo5sbga"
         provider:
           twitch:
             token-uri: https://id.twitch.tv/oauth2/token
+  datasource:
+    url: jdbc:mysql://${DATABASE_URL:localhost}:3306/twitch?createDatabaseIfNotExist=true
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:secret}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: "classpath:database-init.sql"
 
 
 logging:
